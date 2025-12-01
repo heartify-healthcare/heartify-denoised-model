@@ -1,14 +1,14 @@
 services:
-  heartify-dl-postgres:
+  heartify-denoised-postgres:
     image: postgres:15-alpine
-    container_name: heartify-dl-postgres
+    container_name: heartify-denoised-postgres
     restart: always
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5433:5432"
+      - "5434:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
