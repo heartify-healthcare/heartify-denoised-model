@@ -2,6 +2,7 @@ __pycache__/
 .env
 .pyc
 
+best_attention_unet.pth
 ecg_fm_best.pth
 
 .vscode
