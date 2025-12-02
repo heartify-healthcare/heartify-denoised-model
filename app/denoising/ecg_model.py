@@ -1,7 +1,3 @@
-"""
-ECG Attention U-Net Model for ECG Denoising
-Based on the PyTorch implementation from denoised.py
-"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -15,7 +11,7 @@ CHUNK_SIZE = 1300  # 10s * 130Hz (Model window size)
 
 
 class ConvBlock(nn.Module):
-    """Convolutional block with BatchNorm and LeakyReLU"""
+    """Convolutional block with BatchNorm and LeakyReLU."""
     
     def __init__(self, in_c, out_c):
         super().__init__()
@@ -33,7 +29,7 @@ class ConvBlock(nn.Module):
 
 
 class AttentionGate(nn.Module):
-    """Attention Gate for U-Net skip connections"""
+    """Attention Gate for U-Net skip connections."""
     
     def __init__(self, F_g, F_l, F_int):
         super().__init__()
@@ -61,7 +57,7 @@ class AttentionGate(nn.Module):
 
 
 class AttentionUNet(nn.Module):
-    """Attention U-Net architecture for ECG signal denoising"""
+    """Attention U-Net architecture for ECG signal denoising."""
     
     def __init__(self):
         super().__init__()
@@ -143,11 +139,7 @@ class AttentionUNet(nn.Module):
 
 
 class ECGModel:
-    """
-    Singleton wrapper for AttentionUNet model inference
-
-    Handles model loading and ECG signal denoising
-    """
+    """Singleton wrapper for AttentionUNet model inference. Handles model loading and ECG signal denoising."""
     _instance = None
 
     def __new__(cls):
@@ -158,12 +150,7 @@ class ECGModel:
         return cls._instance
 
     def load(self, model_path: str) -> None:
-        """
-        Load the AttentionUNet model weights
-
-        Args:
-            model_path: Path to the .pth model weights file
-        """
+        """Load the AttentionUNet model weights."""
         if self._model is None:
             try:
                 # Determine device (CPU or CUDA)
@@ -186,21 +173,7 @@ class ECGModel:
                 raise RuntimeError(f"Failed to load AttentionUNet model: {str(e)}")
 
     def denoise(self, ecg_signal: np.ndarray) -> np.ndarray:
-        """
-        Denoise ECG signal using AttentionUNet model
-
-        Follows the exact logic from denoise_signal function in denoised.py:
-        1. Z-score normalization of the entire signal
-        2. Process in chunks of CHUNK_SIZE (1300 samples)
-        3. Pad last chunk if needed
-        4. Concatenate results
-
-        Args:
-            ecg_signal: 1D numpy array of ECG signal (1300 float samples)
-
-        Returns:
-            Denoised 1D numpy array
-        """
+        """Denoise ECG signal using AttentionUNet model with Z-score normalization and chunk processing."""
         if self._model is None:
             raise RuntimeError("Model not loaded. Call load() first.")
 

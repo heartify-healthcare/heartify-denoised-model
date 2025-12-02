@@ -1,4 +1,3 @@
-"""ECG Denoising endpoint controller"""
 from flask import Blueprint, request, jsonify, current_app
 from app.api_keys.auth import api_key_required
 from app.denoising.ecg_model import ECGModel
@@ -11,22 +10,7 @@ denoising_bp = Blueprint('denoising', __name__)
 @denoising_bp.route('', methods=['POST'])
 @api_key_required
 def denoise_ecg():
-    """
-    Perform ECG denoising using the AttentionUNet model
-
-    Requires: x-api-key header with valid API key
-
-    Body:
-        {
-            "ecg_signal": [array of 1300 float values for 130Hz 1-lead ECG (10 seconds)]
-        }
-
-    Returns:
-        200: JSON with denoised signal and model version
-        400: Invalid request
-        401: Invalid or missing API key
-        500: Model inference error
-    """
+    """Perform ECG denoising using the AttentionUNet model."""
     try:
         data = request.get_json()
 
