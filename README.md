@@ -53,7 +53,7 @@ x-api-key: your-api-key
 - **Signal Processing**: NumPy
 
 ## 📦 Installation
-
+Clone and install dependencies
 ```bash
 # Clone repository
 git clone https://github.com/heartify-healthcare/heartify-denoised-model.git
@@ -63,8 +63,13 @@ cd heartify-denoised-model
 pip install -r requirements.txt
 
 # Configure .env file with your settings
-# DATABASE_URL, SMTP_*, SECRET_KEY, ECG_MODEL_PATH, MODEL_VERSION, etc.
+# It should be looked like .env.example
+```
 
+Download the `best_attention_unet.pth` in [link](https://www.kaggle.com/code/minhphuc2544/denoised-model-proposed-solution/output) and put it in `model` folder.
+
+Run server
+```bash
 # Run server
 python wsgi.py
 ```
