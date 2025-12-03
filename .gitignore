@@ -6,3 +6,5 @@ best_attention_unet.pth
 ecg_fm_best.pth
 
 .vscode
+
+venv
