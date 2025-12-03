@@ -48,7 +48,7 @@ x-api-key: your-api-key
 
 ## 🛠️ Tech Stack
 
-- **Backend**: Python 3.12.0 or below, Flask 2.3.3, PostgreSQL, SQLAlchemy
+- **Backend**: Python 3.12.0, Flask 2.3.3, PostgreSQL, SQLAlchemy
 - **Deep Learning**: PyTorch 2.6.0
 - **Signal Processing**: NumPy
 
