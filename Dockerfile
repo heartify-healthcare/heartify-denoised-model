@@ -74,7 +74,6 @@ COPY --from=builder /app/model ./model
 # 4. Copy Source Code & Config
 COPY wsgi.py .
 COPY app ./app
-COPY heartify-denoised-model.env .
 
 # 5. Security & Run
 RUN adduser --disabled-password --gecos "" aiuser
