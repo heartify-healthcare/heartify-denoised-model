@@ -4,4 +4,5 @@ from app import create_app
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    # Exposed port should be 5001 in Development or 5000 in Production
+    app.run(host="0.0.0.0", port=5001)
